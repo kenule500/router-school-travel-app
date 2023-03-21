@@ -3,7 +3,7 @@ import HomeView from "@/views/HomeView.vue";
 import sourceData from "@/data.json";
 
 const routes = [
-  { path: "/", name: "home", component: HomeView },
+  { path: "/", name: "home", component: HomeView, alias: "/home" },
   {
     path: "/protected",
     name: "protected",
@@ -26,6 +26,11 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
+  },
+  {
+    path: "/example/:id(\\d+)+",
+    name: "example",
+    component: () => import(/*webpackChunkName: "login"*/ "@/views/LoginView"),
   },
   {
     path: "/destination/:id/:slug",
